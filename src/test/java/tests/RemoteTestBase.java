@@ -42,6 +42,7 @@ public class RemoteTestBase {
         Configuration.browserSize = browserSize;
         Configuration.baseUrl = "https://ladadigit.ru";
         Configuration.pageLoadStrategy = "eager";
+        Configuration.browserSize = "1920x1080";
         Configuration.timeout = 10000;
         setupRemote();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
