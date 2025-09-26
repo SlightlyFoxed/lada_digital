@@ -28,7 +28,7 @@ public class LadaDigitalPage {
     @Step("Открыть главную страницу 'Lada Цифра'")
     public LadaDigitalPage openPageLadaDigit(){
         open("");
-        titleOfMainPage.shouldBe(visible, Duration.ofSeconds(5)).shouldHave(text(String.valueOf(LadaDigit.HELLO_MESSAGE)));
+        titleOfMainPage.scrollTo().shouldBe(visible).shouldHave(text(String.valueOf(LadaDigit.HELLO_MESSAGE)));
         return this;
     }
 
