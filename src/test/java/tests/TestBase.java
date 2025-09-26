@@ -11,39 +11,25 @@ import pages.LadaDigitalPage;
 
 import java.util.Map;
 
-
 public class TestBase {
 
     LadaDigitalPage ladaDigitalPage = new LadaDigitalPage();
-    static String selenoidUserLogin = System.getProperty("selenoidUserLogin");
-    static String selenoidUserPassword = System.getProperty("selenoidUserPassword");
-    static String selenoidRemoteServerUrl = System.getProperty(
-            "selenoidRemoteServerUrl");
-    static String browser = System.getProperty("browser");
-    static String browserVersion = System.getProperty("browserVersion");
-    static String browserSize = System.getProperty("browserResolution");
 
-    public static void setupRemote() {
+    @BeforeAll
+    static void beforeAll() {
+        //Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://ladadigit.ru/";
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.timeout = 10000;
+        //Configuration.holdBrowserOpen = true;
+        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+        capabilities.setCapability("selenoid:options", Map.<String,Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-        Configuration.remote = "https://" +
-                selenoidUserLogin + ":" + selenoidUserPassword +"@" + selenoidRemoteServerUrl + "/wd/hub";
-    }
 
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.browser = browser;
-        Configuration.browserVersion = browserVersion;
-        Configuration.browserSize = browserSize;
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 10000;
-        setupRemote();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 

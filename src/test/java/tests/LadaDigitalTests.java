@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("Проверка функциональности главной страницы")
-public class LadaDigitalTests extends TestBase{
+public class LadaDigitalTests extends RemoteTestBase {
 
     @Test
     @Tag("lada")
