@@ -4,6 +4,8 @@ import com.codeborne.selenide.SelenideElement;
 import data.enums.LadaDigit;
 import io.qameta.allure.Step;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
@@ -26,7 +28,7 @@ public class LadaDigitalPage {
     @Step("Открыть главную страницу 'Lada Цифра'")
     public LadaDigitalPage openPageLadaDigit(){
         open("");
-        titleOfMainPage.shouldBe(visible).shouldHave(text(String.valueOf(LadaDigit.HELLO_MESSAGE)));
+        titleOfMainPage.shouldBe(visible, Duration.ofSeconds(5)).shouldHave(text(String.valueOf(LadaDigit.HELLO_MESSAGE)));
         return this;
     }
 
